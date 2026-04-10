@@ -1,7 +1,7 @@
 package com.devraj.registration.service;
 
-import com.example.demo.entity.User;
-import com.example.demo.repository.UserRepository;
+import com.devraj.registration.entity.User;
+import com.devraj.registration.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
