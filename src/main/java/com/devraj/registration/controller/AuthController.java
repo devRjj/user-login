@@ -31,8 +31,16 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute com.devraj.registration.entity.User user) {
-        userService.register(user.getEmail(), user.getPassword());
-        return "redirect:/login";
+    public String registerUser(@ModelAttribute com.devraj.registration.entity.User user, RedirectAttributes redirectAttributes) {
+        try {
+            userService.register(user.getEmail(), user.getPassword());
+            // Add a flash attribute to show a success message on the login page
+            redirectAttributes.addFlashAttribute("success", "Registration successful! Please log in.");
+            return "redirect:/login";
+        } catch (Exception e) {
+            // Handle duplicate emails or other errors
+            redirectAttributes.addFlashAttribute("error", "Registration failed: " + e.getMessage());
+            return "redirect:/register";
+        }
     }
 }
