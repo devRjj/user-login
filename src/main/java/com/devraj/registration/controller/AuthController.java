@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.devraj.registration.controller;
 
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,11 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/login";
+    }
 
     @GetMapping("/login")
     public String login() {

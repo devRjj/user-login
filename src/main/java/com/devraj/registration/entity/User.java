@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.devraj.registration.entity;
 
 import jakarta.persistence.*;
 
