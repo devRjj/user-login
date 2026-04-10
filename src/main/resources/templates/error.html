@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error - Something Went Wrong</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen px-4">
+    <div class="max-w-lg w-full text-center">
+        <div class="mb-8">
+            <div class="mx-auto h-24 w-24 flex items-center justify-center rounded-full bg-red-100">
+                <svg class="h-12 w-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+            </div>
+        </div>
+
+        <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl mb-4">
+            Oops! Error <span th:text="${status}">500</span>
+        </h1>
+        
+        <p class="text-base text-gray-600 mb-8">
+            <span th:text="${error}">Unexpected Error</span>: 
+            <span th:text="${message}">Something went wrong on our end.</span>
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="javascript:history.back()" 
+               class="inline-flex items-center justify-center px-5 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition shadow-sm">
+                Go Back
+            </a>
+            <a th:href="@{/}" 
+               class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition shadow-sm">
+                Return Home
+            </a>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-2">Technical Details</p>
+            <p class="text-xs text-gray-400" th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></p>
+            <p class="text-xs font-mono text-gray-400 mt-1" th:if="${path}">Path: <span th:text="${path}">/example</span></p>
+        </div>
+    </div>
+</body>
+</html>
